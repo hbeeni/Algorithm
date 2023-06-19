@@ -2,7 +2,7 @@ package string;
 
 import java.util.Scanner;
 
-public class b2744 {
+public class B2744 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
