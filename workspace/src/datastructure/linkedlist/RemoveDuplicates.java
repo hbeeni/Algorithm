@@ -4,7 +4,7 @@
  * (3 -> 2 -> 1 -> 2 -> 4)
  */
 
-package dataStructure.linkedList;
+package datastructure.linkedlist;
 
 public class RemoveDuplicates {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package dataStructure.linkedList;
+package datastructure.linkedlist;
 
 public class SinglyLinkedListWithNode {
     public static void main(String[] args) {
