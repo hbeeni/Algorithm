@@ -1,37 +1,20 @@
-/**
- * 정렬되어 있지 않은 LinkedList의 중복되는 값 제거
- * (단, 별도의 버퍼 사용 금지)
- * (3 -> 2 -> 1 -> 2 -> 4)
- */
+package datastructure.linkedlist.singly;
 
-package datastructure.linkedlist;
+public class LinkedList {
 
-public class RemoveDuplicates {
-    public static void main(String[] args) {
-        LinkedListV2 ll = new LinkedListV2();
-        ll.append(2);
-        ll.append(1);
-        ll.append(2);
-        ll.append(3);
-        ll.append(4);
-        ll.append(3);
-        ll.append(2);
-        ll.append(2);
-        ll.retrieve();
-        ll.removeDups();
-        ll.retrieve();
-    }
-}
-
-class LinkedListV2 {
     Node header;
 
     static class Node {
         int data;
         Node next = null;
+
+        @Override
+        public String toString() {
+            return "data=" + data;
+        }
     }
 
-    public LinkedListV2() {
+    public LinkedList() {
         header = new Node();
     }
 
@@ -71,6 +54,7 @@ class LinkedListV2 {
         System.out.println(n.data);
     }
 
+    //중복 제거
     void removeDups() {
         Node n = header;
 
@@ -87,5 +71,28 @@ class LinkedListV2 {
 
             n = n.next;
         }
+    }
+
+    //끝에서 k번째 노드 찾기
+    Node kthToLastV1(int k) {
+        Node n = header;
+        int size = 0;
+
+        while (n.next != null) {
+            size++;
+            n = n.next;
+        }
+
+        n = header;
+        for (int i = 0; i < size - k + 1; i++) {
+            n = n.next;
+        }
+
+        return n;
+    }
+
+    //끝에서 k번째 노드 찾기 - 재귀호출
+    Node kthToLastV2(Node n, int k) {
+        return null;
     }
 }
