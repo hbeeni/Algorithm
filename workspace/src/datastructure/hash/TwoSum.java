@@ -1,6 +1,6 @@
 //nums의 두 수를 합해서 target이 나오는지 boolean 반환
 
-package datastructure.hashmap;
+package datastructure.hash;
 
 import java.util.Arrays;
 import java.util.HashMap;
