@@ -36,8 +36,6 @@ public class BubbleSort3 {
             if (!swap) {
                 break;
             }
-
-
         }
     }
 

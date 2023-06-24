@@ -6,22 +6,24 @@ public class P4 {
 
     //--- 배열의 요소 a[idx1]과 a[idx2]를 교환 ---//
     static void swap(int[] a, int idx1, int idx2) {
-        int t = a[idx1]; a[idx1] = a[idx2]; a[idx2] = t;
+        int t = a[idx1];
+        a[idx1] = a[idx2];
+        a[idx2] = t;
     }
 
     //--- 단순교환정렬 ---//
     static void bubbleSort(int[] a, int n) {
-        int ccnt = 0;			// 비교 회수
-        int scnt = 0;			// 교환 회수
+        int ccnt = 0;            // 비교 회수
+        int scnt = 0;            // 교환 회수
 
         int i = 0;
-        int k = 0;							// a[k]보다 앞쪽은 정렬을 마친 상태
+        int k = 0;                            // a[k]보다 앞쪽은 정렬을 마친 상태
         while (k < n - 1) {
             System.out.printf("패스%d : \n", ++i);
-            int last = n - 1;			// 마지막으로 요소를 교환한 위치
+            int last = n - 1;            // 마지막으로 요소를 교환한 위치
             for (int j = n - 1; j > k; j--) {
                 for (int m = 0; m < n - 1; m++)
-                    System.out.printf("%3d %c" , a[m], (m != j-1) ? ' ' :
+                    System.out.printf("%3d %c", a[m], (m != j - 1) ? ' ' :
                             (a[j - 1] > a[j]) ? '+' : '-');
                 System.out.printf("%3d\n", a[n - 1]);
                 ccnt++;
