@@ -10,6 +10,11 @@ public class KthToLastEx {
         ll.append(1);
         ll.append(4);
         ll.retrieve();
-        System.out.println(ll.kthToLastV1(1));
+
+        int k = 1;
+        System.out.println(LinkedList.kthToLast(ll.getHeader(), k));
+        LinkedList.kthToLastRecurV1(ll.getHeader(), k);
+        System.out.println(LinkedList.kthToLastRecurV2(ll.getHeader(), k, new Reference()));
+        System.out.println(LinkedList.kthToLastPointer(ll.getHeader(), k));
     }
 }
