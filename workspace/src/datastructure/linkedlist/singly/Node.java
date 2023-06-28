@@ -5,6 +5,9 @@ public class Node {
     int data;
     Node next = null;
 
+    public Node() {
+    }
+
     public Node(int data) {
         this.data = data;
     }
@@ -42,5 +45,10 @@ public class Node {
         }
 
         System.out.println(n.data);
+    }
+
+    @Override
+    public String toString() {
+        return "data=" + data;
     }
 }

@@ -4,16 +4,6 @@ public class LinkedList {
 
     private Node header;
 
-    static class Node {
-        int data;
-        Node next = null;
-
-        @Override
-        public String toString() {
-            return "data=" + data;
-        }
-    }
-
     public LinkedList() {
         header = new Node();
     }
@@ -56,6 +46,17 @@ public class LinkedList {
 
     Node getHeader() {
         return header;
+    }
+
+    //index는 1부터 시작
+    Node get(int index) {
+        Node n = header;
+
+        for (int i = 0; i < index; i++) {
+            n = n.next;
+        }
+
+        return n;
     }
 
     //중복 제거
