@@ -126,7 +126,7 @@ public class LinkedList {
         return found;
     }
 
-    //포인터 2개 사용
+    //끝에서 k번째 노드 찾기 - 포인터 2개 사용
     static Node kthToLastPointer(Node n, int k) {
         Node p1 = n;
         Node p2 = n;
