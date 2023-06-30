@@ -15,6 +15,12 @@ public class Stack<T> {
 
     private Node<T> top;
 
+    public void push(T data) {
+        Node<T> t = new Node<>(data);
+        t.next = top;
+        top = t;
+    }
+
     public T pop() {
         if (top == null) {
             throw new EmptyStackException();
@@ -23,12 +29,6 @@ public class Stack<T> {
         T data = top.data;
         top = top.next; //다음 노드를 top으로 만들기
         return data;
-    }
-
-    public void push(T data) {
-        Node<T> t = new Node<>(data);
-        t.next = top;
-        top = t;
     }
 
     public T peek() {
