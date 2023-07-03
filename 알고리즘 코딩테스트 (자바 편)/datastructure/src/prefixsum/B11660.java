@@ -1,3 +1,5 @@
+//책과 풀이 같음
+
 package prefixsum;
 
 import java.io.BufferedReader;
