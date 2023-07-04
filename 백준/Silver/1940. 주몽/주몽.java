@@ -1,37 +1,41 @@
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.*;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        Scanner sc = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int n = sc.nextInt();
-        int m = sc.nextInt();
-        Map<Integer, Integer> list = new HashMap<>();
+        int n = Integer.parseInt(br.readLine());
+        int m = Integer.parseInt(br.readLine());
 
+        int[] a = new int[n];
+
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        
         for (int i = 0; i < n; i++) {
-            int num = sc.nextInt();
+            a[i] = Integer.parseInt(st.nextToken());
+        }
 
-            if (list.containsKey(num)) {
-                Integer count = list.get(num);
-                list.put(num, count + 1);
+        Arrays.sort(a);
+        int count = 0;
+        int s = 0;
+        int e = n - 1;
+
+        while (s < e) {
+            if (a[s] + a[e] == m) {
+                count++;
+                s++;
+                e--;
+            } else if (a[s] + a[e] < m) {
+                s++;
             } else {
-                list.put(num, 1);
+                e--;
             }
         }
 
-        long result = 0;
-
-        for (Integer num : list.keySet()) {
-            if (2 * num != m && list.containsKey(m - num)) {
-                Integer count1 = list.get(num);
-                Integer count2 = list.get(m - num);
-                result += count1 * count2;
-                list.put(num, 0);
-                list.put(m - num, 0);
-            }
-        }
-
-        System.out.println(result);
+        System.out.println(count);
     }
 }
