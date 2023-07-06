@@ -5,20 +5,15 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String word = sc.next();
 
-        int start = 0;
-        int end = word.length() - 1;
-
         boolean palindrome = true;
-        while (start < end) {
-            if (word.charAt(start) != word.charAt(end)) {
+
+        for (int i = 0; i < word.length() / 2; i++) {
+            if (word.charAt(i) != word.charAt(word.length() - 1 - i)) {
                 palindrome = false;
             }
             if (!palindrome) {
                 break;
             }
-
-            start++;
-            end--;
         }
 
         System.out.println(palindrome ? 1 : 0);
