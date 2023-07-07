@@ -6,32 +6,23 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
-        int[] a = new int['z' - 'a' + 1];
-        int result = 0;
+        int result = n;
 
         for (int i = 0; i < n; i++) {
+            boolean[] visited = new boolean['z' - 'a' + 1];
             String word = br.readLine();
-            boolean isGroupWord = true;
-
-            for (int j = 0; j < a.length; j++) {
-                a[j] = -1;
-            }
 
             for (int j = 0; j < word.length(); j++) {
-                //마지막 인덱스가 내 바로 앞이거나 -1이면
                 int idx = word.charAt(j) - 'a';
 
-                if (a[idx] == -1 || j - 1 == a[idx]) {
-                    a[idx] = j;
-                    continue;
+                if (visited[idx]) {
+                    if (word.charAt(j) != word.charAt(j - 1)) {
+                        result--;
+                        break;
+                    }
                 } else {
-                    isGroupWord = false;
-                    break;
+                    visited[idx] = true;
                 }
-            }
-
-            if (isGroupWord) {
-                result++;
             }
         }
 
