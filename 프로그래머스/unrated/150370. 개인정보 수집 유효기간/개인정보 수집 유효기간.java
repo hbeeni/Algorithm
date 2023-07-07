@@ -4,35 +4,18 @@ import java.time.*;
 class Solution {
     public int[] solution(String today, String[] terms, String[] privacies) {
         List<Integer> list = new ArrayList<>();
-        Map<String, LocalDateTime> map = new HashMap<>();
+        Map<String, Integer> termMap = new HashMap<>();
+        int day = getDay(today);
 
-        int y = Integer.parseInt(today.split("[.]")[0]);
-        int m = Integer.parseInt(today.split("[.]")[1]);
-        int d = Integer.parseInt(today.split("[.]")[2]);
-
-        for (String t : terms) {
-            String[] tmp = t.split(" ");
-
-            int tm = m - Integer.parseInt(tmp[1]);
-            int ty = y;
-            while (tm < 1) {
-                tm += 12;
-                ty--;
-            }
-
-            map.put(tmp[0], LocalDateTime.of(ty, tm, d, 0, 0));
+        for (String term : terms) {
+            String[] tmp = term.split(" ");
+            termMap.put(tmp[0], Integer.parseInt(tmp[1]));
         }
 
         for (int i = 0; i < privacies.length; i++) {
             String[] tmp = privacies[i].split(" ");
-            LocalDateTime pday = map.get(tmp[1]); //이전은 파기
-            
-            LocalDateTime day
-                = LocalDateTime.of(Integer.parseInt(tmp[0].substring(0,4)),
-                                  Integer.parseInt(tmp[0].substring(5,7)),
-                                  Integer.parseInt(tmp[0].substring(8)), 0, 0);
-            
-            if (day.isAfter(pday)) {
+
+            if ((getDay(tmp[0]) + termMap.get(tmp[1]) * 28) > day) {
                 continue;
             }
 
@@ -40,5 +23,13 @@ class Solution {
         }
 
         return list.stream().mapToInt(i -> i).toArray();
+    }
+
+    static int getDay(String date) {
+        int y = Integer.parseInt(date.split("[.]")[0]);
+        int m = Integer.parseInt(date.split("[.]")[1]);
+        int d = Integer.parseInt(date.split("[.]")[2]);
+
+        return y * 12 * 28 + m * 28 + d;
     }
 }
