@@ -1,6 +1,6 @@
 //https://st-lab.tistory.com/73
 
-package baejoon_step.generalmath;
+package baekjoon_step.generalmath;
 
 import java.util.Scanner;
 

@@ -1,6 +1,6 @@
 //https://propercoding.tistory.com/241
 
-package baejoon_step.twod_arr;
+package baekjoon_step.twod_arr;
 
 import java.io.BufferedReader;
 import java.io.IOException;

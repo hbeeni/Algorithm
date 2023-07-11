@@ -1,6 +1,6 @@
 //https://www.acmicpc.net/source/63191731
 
-package baejoon_step.generalmath;
+package baekjoon_step.generalmath;
 
 import java.io.BufferedReader;
 import java.io.IOException;
