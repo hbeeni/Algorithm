@@ -1,8 +1,10 @@
+//https://st-lab.tistory.com/279
+
 import java.io.*;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
-import java.util.TreeMap;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -10,23 +12,27 @@ public class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         int n = Integer.parseInt(br.readLine());
-        Map<Integer, Integer> map = new HashMap<>();
-        Map<Integer, Integer> sortedMap = new TreeMap<>();
+
+        int[] origin = new int[n]; //원본 배열
 
         StringTokenizer st = new StringTokenizer(br.readLine());
         for (int i = 0; i < n; i++) {
-            int num = Integer.parseInt(st.nextToken());
-            map.put(i, num);
-            sortedMap.put(num, 0);
+            origin[i] = Integer.parseInt(st.nextToken());
         }
 
-        int count = 0;
-        for (Integer i : sortedMap.keySet()) {
-            sortedMap.put(i, count++);
+        Integer[] sorted = Arrays.stream(origin)
+                .distinct()
+                .sorted()
+                .boxed()
+                .toArray(Integer[]::new);
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < sorted.length; i++) {
+            map.put(sorted[i], i);
         }
 
-        for (int i = 0; i < n; i++) {
-            bw.write(sortedMap.get(map.get(i)) + " ");
+        for (int num : origin) {
+            bw.write(map.get(num) + " ");
         }
 
         bw.flush();
