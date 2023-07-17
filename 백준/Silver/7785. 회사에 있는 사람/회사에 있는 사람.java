@@ -1,7 +1,7 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.TreeSet;
 
 public class Main {
@@ -10,19 +10,16 @@ public class Main {
 
         int n = Integer.parseInt(br.readLine());
 
-        Set<String> set = new HashSet<>();
+        TreeSet<String> sortedSet = new TreeSet<>(Comparator.reverseOrder());
         for (int i = 0; i < n; i++) {
             String name = br.readLine().split(" ")[0];
 
-            if (!set.contains(name)) {
-                set.add(name);
+            if (!sortedSet.contains(name)) {
+                sortedSet.add(name);
             } else {
-                set.remove(name);
+                sortedSet.remove(name);
             }
         }
-
-        TreeSet<String> sortedSet = new TreeSet<>(Comparator.reverseOrder());
-        sortedSet.addAll(set);
 
         StringBuilder sb = new StringBuilder();
         sortedSet.forEach(name -> sb.append(name).append("\n"));
