@@ -1,3 +1,5 @@
+//https://steady-coding.tistory.com/254
+
 import java.util.Scanner;
 
 public class Main {
@@ -10,12 +12,10 @@ public class Main {
         int c = sc.nextInt();
         int d = sc.nextInt();
 
-        int gcd = getGCD(b, d);
+        int denominator = b * d;
+        int numerator = a * d + b * c;
 
-        int denominator = b * d / gcd; //분모
-        int numerator = a * (denominator / b) + c * (denominator / d); //분자
-
-        gcd = getGCD(denominator, numerator);
+        int gcd = getGCD(denominator, numerator);
 
         System.out.println(numerator / gcd + " " + denominator / gcd);
     }
