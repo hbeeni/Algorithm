@@ -9,6 +9,7 @@ public class 에라토스테네스_체 {
     public static void main(String[] args) {
         int num = 1000000;
 
+        //소수가 true
         boolean[] prime = new boolean[num + 1];
         Arrays.fill(prime, true);
 
@@ -25,5 +26,17 @@ public class 에라토스테네스_체 {
 //                prime[j] = false;
 //            }
 //        }
+
+        //소수가 false
+        boolean[] composite = new boolean[num + 1];
+        composite[0] = composite[1] = true;
+
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (composite[i]) continue;
+
+            for (int j = i * i; j <= num; j += i) {
+                composite[j] = true;
+            }
+        }
     }
 }
