@@ -1,24 +1,24 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String str = sc.next();
-        int[] index = new int[26];
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String input = br.readLine();
+        int[] count = new int['z' - 'a' + 1];
+        Arrays.fill(count, -1);
 
-        for (int i = 0; i < index.length; i++) {
-            index[i] = -1;
-        }
+        for (int i = 0; i < input.length(); i++) {
+            int index = input.charAt(i) - 'a';
 
-        for (int i = 0; i < str.length(); i++) {
-            int n = str.charAt(i) - 'a';
-
-            if (index[n] == -1) {
-                index[n] = i;
+            if (count[index] == -1) {
+                count[index] = i;
             }
         }
 
-        for (int i : index) {
+        for (int i : count) {
             System.out.print(i + " ");
         }
     }
