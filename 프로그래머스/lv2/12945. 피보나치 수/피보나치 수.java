@@ -1,5 +1,5 @@
 class Solution {
-    public double solution(int n) {
+    public int solution(int n) {
         double answer = 0;
         double n1 = 0, n2 = 1;
         int mod = 1234567;
