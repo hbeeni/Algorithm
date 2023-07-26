@@ -1,41 +1,25 @@
 class Solution {
     public String solution(String s) {
         StringBuilder sb = new StringBuilder();
-        String[] a = s.trim().split(" ");
 
-        for (String str : a) {
-            for (int i = 0; i < str.length(); i++) {
-                char ch = str.charAt(i);
+        int index = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
 
-                if (i % 2 == 0) {
+            if (ch == ' ') {
+                sb.append(' ');
+                index = 0;
+            } else {
+                if (index % 2 == 0) {
                     sb.append(String.valueOf(ch).toUpperCase());
                 } else {
                     sb.append(String.valueOf(ch).toLowerCase());
                 }
-            }
-
-            sb.append(" ");
-        }
-
-        String words = sb.toString().trim();
-        sb = new StringBuilder();
-
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == ' ') {
-                sb.append(' ');
-            } else {
-                break;
+                
+                index++;
             }
         }
-        sb.append(words);
-        for (int i = s.length() - 1; i >= 0; i--) {
-            if (s.charAt(i) == ' ') {
-                sb.append(' ');
-            } else {
-                break;
-            }
-        }
-
+        
         return sb.toString();
     }
 }
