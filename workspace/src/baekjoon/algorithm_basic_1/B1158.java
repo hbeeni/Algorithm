@@ -1,6 +1,6 @@
 //https://dev-coco.tistory.com/167
 
-package baekjoon.algorithmbasic_lecture;
+package baekjoon.algorithm_basic_1;
 
 import java.io.BufferedReader;
 import java.io.IOException;

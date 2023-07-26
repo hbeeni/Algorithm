@@ -1,6 +1,6 @@
 //https://velog.io/@yanghl98/%EB%B0%B1%EC%A4%80-1918-%ED%9B%84%EC%9C%84-%ED%91%9C%EA%B8%B0%EC%8B%9D-JAVA%EC%9E%90%EB%B0%94
 
-package baekjoon.algorithmbasic_lecture;
+package baekjoon.algorithm_basic_1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
