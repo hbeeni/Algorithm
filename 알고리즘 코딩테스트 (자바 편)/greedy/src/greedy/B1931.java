@@ -1,3 +1,5 @@
+//오답
+
 package greedy;
 
 import java.io.BufferedReader;
@@ -21,7 +23,8 @@ public class B1931 {
             map.put(start, Math.min(map.getOrDefault(start, Integer.MAX_VALUE), end));
         }
 
-        int end = map.get(map.firstKey()), count = 1;
+        int end = map.get(map.firstKey());
+        int count = 1;
         map.remove(map.firstKey());
 
         for (int key : map.keySet()) {
