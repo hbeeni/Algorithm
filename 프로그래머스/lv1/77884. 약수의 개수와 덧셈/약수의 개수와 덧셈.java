@@ -1,14 +1,7 @@
 class Solution {
     public int solution(int left, int right) {
         int answer = 0;
-        
-        int n = 1;
-        while (true) {
-            if (left <= n * n) {
-                break;
-            }
-            n++;
-        }
+        double n = Math.ceil(Math.sqrt(left));
 
         for (int i = left; i <= right; i++) {
             if (n * n == i) {
@@ -18,7 +11,7 @@ class Solution {
                 answer += i;
             }
         }
-        
+
         return answer;
     }
 }
