@@ -28,19 +28,14 @@ class Solution {
                     }
                 }
 
-                if (stack.empty()) {
-                    answer++;
-                }
-
                 index = (index == s.length() - 1) ? 0 : index + 1;
             }
 
             if (stack.empty()) {
-                break;
-            } else {
-                answer = 0;
-                stack.clear();
-            }
+                answer++;
+            } 
+            
+            stack.clear();
         }
 
         return answer;
