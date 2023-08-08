@@ -1,6 +1,6 @@
 //https://smartpro.tistory.com/53
 
-package baekjoon.algorithm_basic_1;
+package baekjoon.algorithm_basic_1.dp1;
 
 import java.io.BufferedReader;
 import java.io.IOException;

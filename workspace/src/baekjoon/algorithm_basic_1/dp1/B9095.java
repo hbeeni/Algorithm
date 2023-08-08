@@ -1,7 +1,7 @@
 //https://fbtmdwhd33.tistory.com/73
 //https://lotuslee.tistory.com/43
 
-package baekjoon.algorithm_basic_1;
+package baekjoon.algorithm_basic_1.dp1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
