@@ -1,62 +1,59 @@
-import java.util.*;
-
 class Solution {
     public int[] solution(String[] park, String[] routes) {
-        int maxX = park.length;
-        int maxY = park[0].length();
+        //          N  S   W  E
+        int[] dx = {-1, 1, 0, 0};
+        int[] dy = {0, 0, -1, 1};
         
-        boolean[][] coor = new boolean[maxX][maxY];
-        int[] answer = new int[2];
-        
-        for (int x = 0; x < maxX; x++) {
-            String[] tmp = park[x].split("");
-            
-            for (int y = 0; y < maxY; y++) {
-                if (tmp[y].equals("S")) {
-                    answer[0] = x;
-                    answer[1] = y;
-                }
-                if (!tmp[y].equals("X")) {
-                    coor[x][y] = true;
-                }
+        int x = 0;
+        int y = 0;
+
+        for (int i = 0; i < park.length; i++) {
+            if (park[i].contains("S")) {
+                x = i;
+                y = park[i].indexOf('S');
+                break;
             }
         }
-        
-        for (int i = 0; i < routes.length; i++) {
-            String[] tmp = routes[i].split(" ");
-            String dir = tmp[0];
-            int count = Integer.parseInt(tmp[1]);
+
+        for (String route : routes) {
+            char direction = route.charAt(0);
+            int count = route.charAt(2) - '0';
+            int idx = 0;
             
-            int x = answer[0];
-            int y = answer[1];
+            switch (direction) {
+                case 'S':
+                    idx = 1;
+                    break;
+                case 'W':
+                    idx = 2;
+                    break;
+                case 'E':
+                    idx = 3;
+                    break;
+            }
+
+            int tempX = x;
+            int tempY = y;
+            boolean possible = true;
             
-            for (int j = 0; j < count; j++) {
-                switch (dir) {
-                case "N":
-                    x--;
-                    break;
-                case "S":
-                    x++;
-                    break;
-                case "W":
-                    y--;
-                    break;
-                case "E":
-                    y++;
-                    break;
+            while (--count >= 0) {
+                if (tempX + dx[idx] >= 0 && tempX + dx[idx] < park.length &&
+                        tempY + dy[idx] >= 0 && tempY + dy[idx] < park[0].length() && 
+                        park[tempX + dx[idx]].charAt(tempY + dy[idx]) != 'X') {
+                    
+                    tempX += dx[idx];
+                    tempY += dy[idx];
+                    continue;
                 }
-                
-                if (!(x >= 0 && y >= 0 && x < maxX && y < maxY && coor[x][y])) {
-                    break;
-                }
-                
-                if (j == count - 1) {
-                    answer[0] = x;
-                    answer[1] = y;
-                }
+                possible = false;
+            }
+            
+            if (possible) {
+                x = tempX;
+                y = tempY;
             }
         }
-        
-        return answer;
+
+        return new int[]{x, y};
     }
 }
