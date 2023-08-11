@@ -3,7 +3,7 @@ package programmers.lv1;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Hamburger {
+public class 햄버거_만들기 {
     public int solution(int[] ingredient) {
         //빵(1) 야채(2) 고기(3)
         List<Integer> list = new ArrayList<>();
@@ -32,7 +32,7 @@ public class Hamburger {
     }
 
     public static void main(String[] args) {
-        Hamburger hb = new Hamburger();
+        햄버거_만들기 hb = new 햄버거_만들기();
         System.out.println(hb.solution(new int[]{2, 1, 1, 2, 3, 1, 2, 3, 1}));
         System.out.println(hb.solution(new int[]{1, 3, 2, 1, 2, 1, 3, 1, 2}));
     }

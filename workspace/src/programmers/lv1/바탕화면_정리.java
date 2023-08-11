@@ -2,7 +2,7 @@ package programmers.lv1;
 
 import java.util.Arrays;
 
-public class Wallpaper {
+public class 바탕화면_정리 {
     public static int[] solution(String[] wallpaper) {
         int x1 = 49, y1 = 49;
         int x2 = 0, y2 = 0;

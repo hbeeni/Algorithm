@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ReceiveReport {
+public class 신고_결과_받기 {
 
     public static int[] solution(String[] id_list, String[] report, int k) {
         List<String> list = Arrays.stream(report).distinct().collect(Collectors.toList()); //중복되지 않는 신고 리스트

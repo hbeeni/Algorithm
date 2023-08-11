@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Privacies {
+public class 개인정보_수집_유효기간 {
     public static int[] solution(String today, String[] terms, String[] privacies) {
         List<Integer> list = new ArrayList<>();
         Map<String, Integer> termMap = new HashMap<>();
