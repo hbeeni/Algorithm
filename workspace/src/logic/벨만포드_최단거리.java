@@ -1,4 +1,4 @@
-package logic.dp;
+package logic;
 
 import java.io.IOException;
 import java.util.Arrays;
