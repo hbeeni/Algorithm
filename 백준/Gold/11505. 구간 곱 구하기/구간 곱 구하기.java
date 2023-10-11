@@ -1,3 +1,5 @@
+//알고리즘 코딩테스트 자바편
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -5,58 +7,82 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
+
+    static long[] tree;
+    static int mod = 1_000_000_007;
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int mod = 1_000_000_007;
         int n = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
         int k = Integer.parseInt(st.nextToken());
 
-        int tmp = 1;
-        while (Math.pow(2, tmp) < n) {
-            tmp++;
+        int treeHeight = 0;
+        int length = n;
+        while (length != 0) {
+            length /= 2;
+            treeHeight++;
         }
 
-        int start = (int) Math.pow(2, tmp);
-        int size = start * 2;
-        long[] tree = new long[size];
+        int size = (int) Math.pow(2, treeHeight + 1);
+        int leftNodeStartIndex = size / 2 - 1;
+        tree = new long[size + 1];
 
         Arrays.fill(tree, 1);
-        for (int i = 0; i < n; i++) {
-            tree[start + i] = Integer.parseInt(br.readLine());
+        for (int i = leftNodeStartIndex + 1; i <= leftNodeStartIndex + n; i++) {
+            tree[i] = Integer.parseInt(br.readLine());
         }
-        for (int i = start - 1; i > 0; i--) {
-            tree[i] = (tree[2 * i] * tree[2 * i + 1]) % mod;
-        }
+        setTree(size - 1);
 
         for (int i = 0; i < m + k; i++) {
             st = new StringTokenizer(br.readLine());
+            int a = Integer.parseInt(st.nextToken());
+            int s = Integer.parseInt(st.nextToken());
+            int e = Integer.parseInt(st.nextToken());
 
-            if (st.nextToken().equals("1")) {
-                int index = Integer.parseInt(st.nextToken()) + start - 1;
-                int value = Integer.parseInt(st.nextToken());
-                tree[index] = value;
-                while ((index /= 2) > 0) {
-                    tree[index] = (tree[2 * index] * tree[2 * index + 1]) % mod;
-                }
+            if (a == 1) {
+                changeVal(leftNodeStartIndex + s, e);
             } else {
-                int s = Integer.parseInt(st.nextToken()) + start - 1;
-                int e = Integer.parseInt(st.nextToken()) + start - 1;
-                long answer = 1;
-                while (s <= e) {
-                    if (s % 2 == 1) {
-                        answer = answer * tree[s] % mod;
-                    }
-                    if (e % 2 == 0) {
-                        answer = answer * tree[e] % mod;
-                    }
-                    s = (s + 1) / 2;
-                    e = (e - 1) / 2;
-                }
-                System.out.println(answer % mod);
+                s += leftNodeStartIndex;
+                e += leftNodeStartIndex;
+                System.out.println(getMul(s, e));
             }
+        }
+
+        br.close();
+    }
+
+    private static long getMul(int s, int e) {
+        long answer = 1;
+        while (s <= e) {
+            if (s % 2 == 1) {
+                answer = answer * tree[s] % mod;
+                s++;
+            }
+            if (e % 2 == 0) {
+                answer = answer * tree[e] % mod;
+                e--;
+            }
+            s /= 2;
+            e /= 2;
+        }
+        return answer;
+    }
+
+    private static void changeVal(int index, int value) {
+        tree[index] = value;
+        while (index > 1) {
+            index /= 2;
+            tree[index] = (tree[2 * index] * tree[2 * index + 1]) % mod;
+        }
+    }
+
+    private static void setTree(int i) {
+        while (i != 1) {
+            tree[i / 2] = tree[i / 2] * tree[i] % mod;
+            i--;
         }
     }
 }
