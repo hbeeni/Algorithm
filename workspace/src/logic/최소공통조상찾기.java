@@ -11,6 +11,7 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 /*
+백준 11437: LCA
 [입력]
 15
 1 2
@@ -43,7 +44,7 @@ import java.util.StringTokenizer;
 3
 1
  */
-public class 최소공통조상 {
+public class 최소공통조상찾기 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
