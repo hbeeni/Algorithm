@@ -42,7 +42,7 @@ import java.util.StringTokenizer;
 3
 1
  */
-public class 제곱근이용_빠르게_최소공통조상찾기 {
+public class 최소공통조상찾기_제곱근이용_빠르게 {
 
     static ArrayList<Integer>[] tree;
     static int[] depth;
