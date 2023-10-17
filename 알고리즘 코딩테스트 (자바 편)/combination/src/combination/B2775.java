@@ -1,4 +1,4 @@
-package binomial_theorem;
+package combination;
 
 import java.util.Scanner;
 
