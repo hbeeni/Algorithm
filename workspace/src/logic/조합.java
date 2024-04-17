@@ -1,32 +1,76 @@
 package logic;
 
 public class 조합 {
-    public static void main(String[] args) {
-        int n = 5;
-        int[][] a = new int[n + 1][n + 1];
+	public static void main(String[] args) {
+		int[] arr = {1, 2, 3, 4};
+		int n = arr.length;
 
-        /**
-         * 조합 점화식
-         * a[i][j] = a[i - 1][j] + a[i - 1][j - 1]
-         * ex) 5개 중 3개를 선택해는 경우의 수 = 4개 중 2개를 선택하는 경우 + 4개 중 3개를 선택하는 경우
-         */
-        for (int i = 1; i <= n; i++) {
-            a[i][0] = 1;
-            a[i][1] = i;
-            a[i][i] = 1;
-        }
-        for (int i = 2; i <= n; i++) {
-            for (int j = 2; j < i; j++) {
-                a[i][j] = a[i - 1][j] + a[i - 1][j - 1];
-            }
-        }
+		boolean[] visited = new boolean[n];
 
-        //i 중 j개를 고르는 경우의 수
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= i; j++) {
-                System.out.print(a[i][j] + " ");
-            }
-            System.out.println();
-        }
-    }
+		for (int i = 1; i <= n; i++) {
+			System.out.println("\n" + n + " 개 중에서 " + i + " 개 뽑기");
+			//combination(arr, visited, 0, n, i);
+			combination2(arr, visited, 0, 0, i);
+		}
+
+	}
+
+	/**
+	 * nCr = n개 중 r개를 뽑는다.
+	 *
+	 * @param arr 조합을 뽑아낼 배열
+	 * @param visited 조합에 뽑혔는지 체크하는 배열
+	 * @param start 시작 인덱스
+	 * @param n 전체 수의 개수
+	 * @param r 뽑아야 하는 수의 개수 = 조합의 길이
+	 */
+	private static void combination(int[] arr, boolean[] visited, int start, int n, int r) {
+		if (r == 0) {
+			print(arr, visited);
+			return;
+		}
+
+		for (int i = start; i < n; i++) {
+			visited[i] = true;
+			combination(arr, visited, i + 1, n, r - 1);
+			visited[i] = false;
+		}
+	}
+
+	/**
+	 * @param arr 조합을 뽑아낼 배열
+	 * @param visited 조합에 뽑혔는지 체크하는 배열
+	 * @param start 시작 인덱스
+	 * @param n 현재 뽑은 수의 개수
+	 * @param target 뽑아야 하는 수의 개수 = 조합의 길이
+	 */
+	private static void combination2(int[] arr, boolean[] visited, int start, int n, int target) {
+		if (n == target) {
+			print(arr, visited);
+			return;
+		}
+
+		for (int i = start; i < visited.length; i++) {
+			if (visited[i]) {
+				continue;
+			}
+
+			visited[i] = true;
+			combination2(arr, visited, i, n + 1, target);
+			visited[i] = false;
+		}
+	}
+
+	/**
+	 * 조합의 결과를 출력한다.
+	 */
+	private static void print(int[] arr, boolean[] visited) {
+		for (int i = 0; i < arr.length; i++) {
+			if (visited[i]) {
+				System.out.print(arr[i] + " ");
+			}
+		}
+
+		System.out.println();
+	}
 }
