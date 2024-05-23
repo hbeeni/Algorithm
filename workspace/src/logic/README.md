@@ -36,5 +36,12 @@
         - [빠른 연산](./트리/최소공통조상_빠른연산.java)
 - [조합](./조합)
     - n개 중 k개 선택 -> `D[i][j] = D[i - 1][j - 1] + D[i - 1][j]`
-- 동적 계획법 (DP, Dynamic Programming)
+- [동적 계획법 (DP, Dynamic Programming)](./동적계획법)
+    - 복잡한 문제를 여러 개의 간단한 문제로 분리하여 부분의 문제들을 해결 (점화식)
+    - Memoization: 모든 작은 문제들은 한 번만 계산해 DP 테이블에 저장
+    - Top-down: 재귀함수
+    - Bottom-up: 반복문
+    - 예시
+        - [피보나치 수 Top-down](./동적계획법/피보나치_TopDown.java)
+        - [피보나치 수 Bottom-up](./동적계획법/피보나치_BottomUp.java)
 - 기하
