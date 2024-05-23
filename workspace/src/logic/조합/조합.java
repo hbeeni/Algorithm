@@ -1,4 +1,4 @@
-package logic;
+package logic.조합;
 
 public class 조합 {
 	public static void main(String[] args) {
